@@ -1,0 +1,79 @@
+<!--%import("css/default.css")-->
+<!--@if($widget_info->colorset == 'dark')-->
+	<!--%import("css/dark.css")-->
+<!--@else-->
+	<!--%import("css/white.css")-->
+<!--@end-->
+
+<!--@if($widget_info->data->lists)-->
+	<!--%import("js/pagination.min.js")-->
+<!--@end-->
+
+<div class="widget_take_roll">
+<!--@if($is_logged && $widget_info->btn_act)-->
+	{@
+		$btn_text_init = array (
+			0 => '매일매일 출첵<span>출석 도장만 찍어도 포인트가 쌓입니다</span>',
+			1 => '<span>내일은 꼭 출석 도장 찍고 포인트 받으세요</span>',
+			2 => sprintf("나의랭킹 %s<span>연속 %s일 / 총 %s일</span>", $widget_info->attendance->rank, number_format($widget_info->attendance->continuity), number_format($widget_info->attendance->total)),
+			3 => '<span>관리자는 출첵 불가</span>',
+		);
+
+		$btn_text = $btn_text_init[$widget_info->status] . $widget_info->admin_info;
+		if($widget_info->status > 1)
+			$btn_color = 'checked';
+		else
+			$btn_color = $widget_info->btn_color;
+	}
+	<!--@if($widget_info->permission)-->
+		<!--@if($widget_info->btn_act == 'direct')-->
+			<!--@if($widget_info->status == 0)-->
+				<!--%import("filter/insert_attendance.xml")-->
+				<form action="./" method="post" id="attendance_frm" ruleset="Attendanceinsert">
+					<input type="hidden" name="mid" value="{$mid}" />
+					<input type="hidden" name="act" value="procAttendanceInsertAttendance" />
+					<input type="hidden" name="xe_validator_id" value="modules/attendance/skins/default/attendanceinsert" />
+					<input type="hidden" name="success_return_url" value="{getRequestUriByServerEnviroment()}" />
+					<input type="hidden" name="greetings" id="greetings" value="{$widget_info->greeting_name}" />
+					<a href="javascript:void(0);" onclick="document.getElementById('attendance_frm').submit();" class="actBtn actBtn_{$btn_color}">{$btn_text}</a>
+				</form>
+			<!--@elseif($widget_info->status == 2)-->
+				<a href="{getUrl('mid','attendance')}" class="actBtn actBtn_{$btn_color}">{$btn_text}</a>
+			<!--@else-->
+				<a href="javascript:void(0);" class="actBtn actBtn_{$btn_color}">{$btn_text}</a>
+			<!--@end-->
+		<!--@else-->
+			<a href="{getUrl('mid','attendance')}" class="actBtn actBtn_{$btn_color}">{$btn_text}</a>
+		<!--@end-->
+	<!--@else-->
+		<a href="javascript:void(0);" class="actBtn actBtn_{$btn_color}">출첵권한 없음<span>권한이 부족합니다. 공지사항을 확인하세요</span></a>
+	<!--@end-->
+<!--@else-->
+	<a href="{getUrl('act','dispMemberLoginForm')}" class="actBtn actBtn_{$widget_info->btn_color}">100% 당첨<span>매일매일 출석 도장 찍고 포인트 받아가세요</span></a>
+<!--@end-->
+<!--@if($widget_info->data->lists)-->
+	<div id="take_roll_container" class="take_roll_show_list"></div>
+	<div id="take_roll_pagination"></div>
+	<script>
+		jQuery(function($) {
+			$('#take_roll_pagination').pagination({
+				dataSource: [{"'".implode("','", $widget_info->data->lists)."'"}],
+				pageSize: {$widget_info->list_count},
+				showPageNumbers: false,
+				showNavigator: false,
+				callback: function(data, pagination) {
+					var html = '<ul>';
+					$.each(data, function(index, item){
+						html += '<li>'+ item +'</li>';
+					});
+					html += '</ul>';
+					$('#take_roll_container').html(html);
+				}
+			});
+			<!--@if(!$widget_info->data->is_page)-->
+				$('#take_roll_pagination').hide();
+			<!--@end-->
+		});
+	</script>
+<!--@end-->
+</div>

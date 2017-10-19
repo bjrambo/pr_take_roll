@@ -1,0 +1,104 @@
+@charset "utf-8";
+.take_roll_show_list {
+	margin-top: 10px;
+	font-size:12px;
+}
+
+.take_roll_show_list ul {
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+.take_roll_show_list ul li {
+	list-style:none;
+	word-break: keep-all;
+	min-height:22px;
+	overflow:hidden;
+	border-top: 1px solid #CFD8DC;
+	padding:5px;
+}
+.take_roll_show_list ul li:hover {
+	background-color: rgba(0, 0, 0, 0.1);
+}
+.take_roll_show_list ul li:last-child {
+    border-bottom: 1px solid #CFD8DC;
+	margin-bottom: 5px;
+}
+.take_roll_show_list ul li span{
+	color:#888;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    max-width: 60%;
+	max-height: 22px;
+    overflow: hidden;
+	margin-right: 4px;
+}
+.take_roll_show_list ul li span img{
+	height: 18px;
+	padding: 1px;
+    border-radius: 50%;
+    border: 1px solid #909599;
+}
+.take_roll_show_list ul li span.rank {
+	color:#FF6F00;
+}
+.take_roll_show_list ul li span.profile_img {
+	vertical-align: bottom;
+	margin-right: 2px;
+}
+.take_roll_show_list ul li span.nick_name {
+	color:#000000;
+}
+.take_roll_show_list ul li span.point {
+	color:#F44336;
+}
+.take_roll_show_list ul li span.conti {
+	color:#689F38;
+}
+.take_roll_show_list ul li span.total {
+	color:#689F38;
+}
+.take_roll_show_list ul li span.greeting {
+	color:#0288d1;
+	max-width: 100%;
+}
+
+.widget_take_roll .actBtn_checked {
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf));
+	background:-moz-linear-gradient(top, #ededed 5%, #dfdfdf 100%);
+	background:-webkit-linear-gradient(top, #ededed 5%, #dfdfdf 100%);
+	background:-o-linear-gradient(top, #ededed 5%, #dfdfdf 100%);
+	background:-ms-linear-gradient(top, #ededed 5%, #dfdfdf 100%);
+	background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf',GradientType=0);
+	background-color:#ededed;
+	border:1px solid #dcdcdc;
+	color:#555555;
+	padding:6px 12px;
+}
+
+#take_roll_pagination .paginationjs .paginationjs-pages li>a:hover {
+    background: #eee;
+}
+#take_roll_pagination .paginationjs .paginationjs-pages li>a {
+    min-width: 30px;
+    height: 28px;
+    line-height: 28px;
+    display: block;
+    background: #fff;
+    font-size: 16px;
+    color: #333;
+    text-decoration: none;
+    text-align: center;
+}
+#take_roll_pagination .paginationjs .paginationjs-pages li {
+    float: left;
+    border: 1px solid #aaa;
+    border-right: none;
+    list-style: none;
+}
+#take_roll_pagination .paginationjs .paginationjs-pages li:last-child {
+    border-right: 1px solid #aaa;
+    border-radius: 0 3px 3px 0;
+}

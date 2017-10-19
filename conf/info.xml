@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget version="0.2">
+    <title xml:lang="ko">간단 출석체크 위젯</title>
+	<description xml:lang="ko">심플한 출석체크 위젯</description>
+    <version>0.4</version>
+    <date>2017-10-18</date>
+    <author email_address="prologos.35@gmail.com" link="http://a3ghost.dyndns.org/">
+        <name xml:lang="ko">Prologos</name>
+    </author>
+    <extra_vars>
+		<group>
+			<title xml:lang="ko">기본 동작</title>
+			<var id="use_cache_sec">
+				<type>text</type>
+				<name xml:lang="ko">오브젝트 캐시 사용시간 (초)</name>
+				<description xml:lang="ko"><![CDATA[<strong>위쪽의 '캐시' 항목은 사용하지 마세요. 위젯이 오동작 합니다.</strong><br/>오브젝트 캐시를 사용해서 위젯의 성능을 향상 시킵니다. 캐시를 유지할 시간을 '초'단위로 입력 해 주세요. (기본: 사용안함)]]></description>
+			</var>
+			<var id="btn_act">
+				<type>select</type>
+				<name xml:lang="ko">버튼 동작</name>
+				<options>
+					<value>direct</value>
+					<name xml:lang="ko">바로 출석</name>
+				</options>
+				<options>
+					<value>link</value>
+					<name xml:lang="ko">출석부로 이동</name>
+				</options>
+			</var>
+			<var id="btn_color">
+				<type>select</type>
+				<name xml:lang="ko">버튼 색깔</name>
+				<options>
+					<value>orange</value>
+					<name xml:lang="ko">오렌지</name>
+				</options>
+				<options>
+					<value>blue</value>
+					<name xml:lang="ko">푸른색</name>
+				</options>
+				<options>
+					<value>lred</value>
+					<name xml:lang="ko">옅은 빨강</name>
+				</options>
+				<options>
+					<value>red</value>
+					<name xml:lang="ko">빨강</name>
+				</options>
+				<options>
+					<value>green</value>
+					<name xml:lang="ko">녹색</name>
+				</options>
+				<options>
+					<value>dgrey</value>
+					<name xml:lang="ko">다크 그레이</name>
+				</options>
+				<options>
+					<value>lpurple</value>
+					<name xml:lang="ko">연보라</name>
+				</options>
+				<options>
+					<value>purple</value>
+					<name xml:lang="ko">보라</name>
+				</options>
+				<options>
+					<value>random</value>
+					<name xml:lang="ko">랜덤</name>
+				</options>
+			</var>
+			<var id="greeting">
+				<type>select</type>
+				<name xml:lang="ko">인사말 남기기</name>
+				<description xml:lang="ko"><![CDATA[랜덤 인사말은 <strong>출석부 모듈</strong>에 랜덤 인사말이 기록되어 있어야 작동합니다.]]></description>
+				<options>
+					<value>none</value>
+					<name xml:lang="ko">아니요</name>
+				</options>
+				<options>
+					<value>rand</value>
+					<name xml:lang="ko">랜덤 인사말</name>
+				</options>
+			</var>
+			<var id="group_srls">
+				<type>member_group</type>
+				<name xml:lang="ko">선택한 그룹만 출석</name>
+				<description xml:lang="ko"><![CDATA[선택한 그룹의 사용자에게만 출석가능 버튼이 노출 됩니다. (선택하지 않으면 모든 그룹 출석 가능.)]]></description>
+			</var>
+			<var id="admin_info">
+				<type>select</type>
+				<name xml:lang="ko">Admin에게 추가정보 제공</name>
+				<description xml:lang="ko"><![CDATA[최고 관리자에게는 버튼 하단에 추가정보(출석체크 수/로그인 수/총 회원수)를 제공합니다.]]></description>
+				<options>
+					<value>yes</value>
+					<name xml:lang="ko">네</name>
+				</options>
+				<options>
+					<value>no</value>
+					<name xml:lang="ko">아니요</name>
+				</options>
+			</var>
+		</group>
+
+		<group>
+			<title xml:lang="ko">출석자 목록</title>
+			<var id="show_list">
+				<type>select</type>
+				<name xml:lang="ko">목록 출력</name>
+				<options>
+					<value>no</value>
+					<name xml:lang="ko">아니요</name>
+				</options>
+				<options>
+					<value>loggedin</value>
+					<name xml:lang="ko">로그인 사용자에게</name>
+				</options>
+				<options>
+					<value>checked</value>
+					<name xml:lang="ko">출석자에게</name>
+				</options>
+				<options>
+					<value>all</value>
+					<name xml:lang="ko">모두에게</name>
+				</options>
+			</var>
+			<var id="order_type">
+				<type>select</type>
+				<name xml:lang="ko">목록 정렬 방식</name>
+				<options>
+					<value>desc</value>
+					<name xml:lang="ko">내림차순</name>
+				</options>
+				<options>
+					<value>asc</value>
+					<name xml:lang="ko">오름차순</name>
+				</options>
+			</var>
+			<var id="list_count">
+				<type>text</type>
+				<name xml:lang="ko">출력할 목록 개수</name>
+				<description xml:lang="ko"><![CDATA[한 화면에 출력할 목록 개수를 지정 합니다. (기본: 5개)]]></description>
+			</var>
+			<var id="page_navi">
+				<type>select</type>
+				<name xml:lang="ko">목록에 페이지 매기기</name>
+				<description xml:lang="ko"><![CDATA['아니요'를 선택하면 출력할 목록 개수만큼만 리스트를 수집합니다.]]></description>
+				<options>
+					<value>no</value>
+					<name xml:lang="ko">아니요</name>
+				</options>
+				<options>
+					<value>yes</value>
+					<name xml:lang="ko">네</name>
+				</options>
+			</var>
+		</group>
+
+		<group>
+			<title xml:lang="ko">목록 상세 설정</title>
+			<var id="list_conti">
+                <type>select</type>
+                <name xml:lang="ko">연속 출석일 표시</name>
+				<options>
+					<value>yes</value>
+					<name xml:lang="ko">네</name>
+				</options>
+				<options>
+					<value>no</value>
+					<name xml:lang="ko">아니요</name>
+				</options>
+			</var>
+			<var id="list_total">
+                <type>select</type>
+                <name xml:lang="ko">총 출석일 표시</name>
+				<options>
+					<value>yes</value>
+					<name xml:lang="ko">네</name>
+				</options>
+				<options>
+					<value>no</value>
+					<name xml:lang="ko">아니요</name>
+				</options>
+			</var>
+			<var id="list_greeting">
+                <type>select</type>
+                <name xml:lang="ko">인사말 표시</name>
+				<options>
+					<value>no</value>
+					<name xml:lang="ko">아니요</name>
+				</options>
+				<options>
+					<value>yes</value>
+					<name xml:lang="ko">네</name>
+				</options>
+			</var>
+		</group>
+    </extra_vars>
+</widget>

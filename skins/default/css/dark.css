@@ -1,0 +1,112 @@
+@charset "utf-8";
+.take_roll_show_list {
+	margin-top: 10px;
+	font-size:12px;
+}
+
+.take_roll_show_list ul {
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+.take_roll_show_list ul li {
+	list-style:none;
+	word-break: keep-all;
+	min-height:22px;
+	overflow:hidden;
+	border-top: 1px solid #3c4249;
+	padding:5px;
+}
+.take_roll_show_list ul li:hover {
+	background-color: rgba(0, 0, 0, 0.2);
+}
+.take_roll_show_list ul li:last-child {
+    border-bottom: 1px solid #3c4249;
+	margin-bottom: 5px;
+}
+.take_roll_show_list ul li span{
+	color:#888;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    max-width: 60%;
+	max-height: 22px;
+    overflow: hidden;
+	margin-right: 4px;
+}
+.take_roll_show_list ul li span img{
+	height: 18px;
+	padding: 1px;
+    border-radius: 50%;
+    border: 1px solid #909599;
+}
+.take_roll_show_list ul li span.rank {
+	color:#ffc300;
+}
+.take_roll_show_list ul li span.profile_img {
+	vertical-align: bottom;
+	margin-right: 2px;
+}
+.take_roll_show_list ul li span.nick_name {
+	color:#ecf0f1;
+}
+.take_roll_show_list ul li span.point {
+	color:#c9302c;
+}
+.take_roll_show_list ul li span.conti {
+	color:#bdc3c7;
+}
+.take_roll_show_list ul li span.total {
+	color:#bdc3c7;
+}
+.take_roll_show_list ul li span.greeting {
+	color:#43a047;
+	max-width: 100%;
+}
+
+.widget_take_roll .actBtn_checked {
+    background: #282f36;
+    background-image: -webkit-linear-gradient(top, #282f36, #070c12);
+    background-image: -moz-linear-gradient(top, #282f36, #070c12);
+    background-image: -ms-linear-gradient(top, #282f36, #070c12);
+    background-image: -o-linear-gradient(top, #282f36, #070c12);
+    background-image: linear-gradient(to bottom, #282f36, #070c12);
+    border: solid #3c4249 1px;
+    color: #ccc;
+	padding:6px 12px;
+}
+
+#take_roll_pagination .paginationjs .paginationjs-pages li>a:hover {
+    background: #282f36;
+	background-image: -webkit-linear-gradient(top, #070c12, #282f36);
+    background-image: -moz-linear-gradient(top, #070c12, #282f36);
+    background-image: -ms-linear-gradient(top, #070c12, #282f36);
+    background-image: -o-linear-gradient(top, #070c12, #282f36);
+    background-image: linear-gradient(to bottom, #070c12, #282f36);
+}
+#take_roll_pagination .paginationjs .paginationjs-pages li>a {
+    min-width: 30px;
+    height: 28px;
+    line-height: 28px;
+    display: block;
+    font-size: 16px;
+    text-decoration: none;
+    text-align: center;
+	color: #ccc;
+	background: #282f36;
+    background-image: -webkit-linear-gradient(top, #282f36, #070c12);
+    background-image: -moz-linear-gradient(top, #282f36, #070c12);
+    background-image: -ms-linear-gradient(top, #282f36, #070c12);
+    background-image: -o-linear-gradient(top, #282f36, #070c12);
+    background-image: linear-gradient(to bottom, #282f36, #070c12);
+}
+#take_roll_pagination .paginationjs .paginationjs-pages li {
+    float: left;
+    border: 1px solid #3c4249;
+    border-right: none;
+    list-style: none;
+}
+#take_roll_pagination .paginationjs .paginationjs-pages li:last-child {
+    border-right: 1px solid #3c4249 ;
+    border-radius: 0 3px 3px 0;
+}

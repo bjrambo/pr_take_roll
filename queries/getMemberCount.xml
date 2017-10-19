@@ -1,0 +1,30 @@
+<query id="getMemberCount" action="select">
+    <tables>
+        <table name="member" />
+    </tables>
+    <columns>
+        <column name="count(*)" alias="total" />
+		<query id="getSignUpMemberCount" alias="signup">
+			<tables>
+				<table name="member" />
+			</tables>
+			<columns>
+				<column name="count(*)" />
+			</columns>
+			<conditions>
+				<condition operation="like_prefix" column="last_login" var="last_login_Ymd" />
+			</conditions>
+		</query>
+		<query id="getTakeRollCount" alias="takeroll">
+			<tables>
+				<table name="attendance_total" />
+			</tables>
+			<columns>
+				<column name="count(*)" />
+			</columns>
+			<conditions>
+				<condition operation="like_prefix" column="regdate" var="last_login_Ymd" />
+			</conditions>
+		</query>
+    </columns>
+</query>
