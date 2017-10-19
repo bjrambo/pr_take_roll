@@ -173,7 +173,16 @@ class pr_take_roll extends WidgetHandler
 	function getRankingByMemberSrl($member_srl)
 	{
 		$result = '집계중';
-		foreach($this->attendanceList as $key => $value)
+
+		$args = new stdClass();
+		$args->order_type = 'asc';
+		$args->today_Ymd = date('Ymd');
+		$output = executeQueryArray('widgets.pr_take_roll.getAllAttendanceList', $args);
+		if (!$output->data)
+		{
+			$output->data = array();
+		}
+		foreach($output->data as $key => $value)
 		{
 			if ($member_srl == $value->member_srl)
 			{
