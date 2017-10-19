@@ -32,6 +32,7 @@ class pr_take_roll extends WidgetHandler
 			/** @var $oAttendanceModel attendanceModel */
 			$oAttendanceModel = getModel('attendance');
 			$output = $oAttendanceModel->getTotalData($logged_info->member_srl);
+			$widget_info->attendance = new stdClass();
 			$widget_info->attendance->total = $output->total;
 			$widget_info->attendance->continuity = $output->continuity;
 
@@ -263,7 +264,7 @@ class pr_take_roll extends WidgetHandler
 		{
 			$image_name_file = $oMemberModel->getProfileImage($value->member_srl);
 
-			$output->data[$key]->profile_src = $image_name_file;
+			$output->data[$key]->profile_src = $image_name_file->src;
 			if(!$output->data[$key]->profile_src)
 			{
 				$output->data[$key]->profile_src = '/widgets/pr_take_roll/profile/default.png';
