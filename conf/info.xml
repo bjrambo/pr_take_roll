@@ -10,11 +10,6 @@
     <extra_vars>
 		<group>
 			<title xml:lang="ko">기본 동작</title>
-			<var id="use_cache_sec">
-				<type>text</type>
-				<name xml:lang="ko">오브젝트 캐시 사용시간 (초)</name>
-				<description xml:lang="ko"><![CDATA[<strong>위쪽의 '캐시' 항목은 사용하지 마세요. 위젯이 오동작 합니다.</strong><br/>오브젝트 캐시를 사용해서 위젯의 성능을 향상 시킵니다. 캐시를 유지할 시간을 '초'단위로 입력 해 주세요. (기본: 사용안함)]]></description>
-			</var>
 			<var id="btn_act">
 				<type>select</type>
 				<name xml:lang="ko">버튼 동작</name>

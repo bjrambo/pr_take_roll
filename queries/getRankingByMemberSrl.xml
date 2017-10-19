@@ -1,0 +1,19 @@
+<query id="getRankingByMemberSrl" action="select">
+	<tables>
+		<table name="attendance" />
+	</tables>
+	<columns>
+		<column name="regdate" alias="regdate" />
+		<column name="member_srl" alias="member_srl" />
+		<column name="today_point" alias="today_point" />
+		<column name="greetings" alias="greetings" />
+		<column name="ipaddress" alias="ipaddress" />
+	</columns>
+	<conditions>
+		<condition operation="like_prefix" column="regdate" var="today" notnull="notnull" />
+		<condition operation="equal" column="member_srl" var="member_srl" notnull="notnull" pipe="and" />
+	</conditions>
+	<navigation>
+		<index var="sort_index" default="regdate" order="order_type" />
+	</navigation>
+</query>
